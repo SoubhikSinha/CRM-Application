@@ -31,7 +31,7 @@ def logout_user(request):
 
 
 def register_user(request):
-	if request.method == 'POST':
+	if request.method == 'POST': # Filling out this form = "POST" action
 		form = SignUpForm(request.POST)
 		if form.is_valid():
 			form.save()
@@ -44,13 +44,13 @@ def register_user(request):
 			return redirect('home')
 	else:
 		form = SignUpForm()
-		return render(request, 'register.html', {'form':form})
+		return render(request, 'register .html', {'form':form})
 
 	return render(request, 'register.html', {'form':form})
 
 
 
-def customer_record(request, pk):
+def customer_record(request, pk): # pk : Primary Key
 	if request.user.is_authenticated:
 		# Looking Up Records
 		customer_record = Record.objects.get(id=pk)
